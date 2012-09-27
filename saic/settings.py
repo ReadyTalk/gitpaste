@@ -28,7 +28,7 @@ TEMPLATE_DEBUG = DEBUG
 AUTH_PROFILE_MODULE = "paste.Profile"
 
 ADMINS = (
-        ('Justin Bruce Van Horne', 'JUSTIN.B.VAN.HORNE@saic.com'),
+        #('Justin Bruce Van Horne', 'JUSTIN.B.VAN.HORNE@saic.com'),
 )
 
 MANAGERS = ADMINS
@@ -179,3 +179,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
         'saic.context_processors.use_icon',
         'saic.context_processors.site',
 )
+
+# Import local_settings if possible
+try:
+    from local_settings import *
+except ImportError, exp:
+    pass
