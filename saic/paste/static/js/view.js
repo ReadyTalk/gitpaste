@@ -45,4 +45,8 @@ $(document).ready(function () {
             $('table.highlighttable div.highlight pre').width($('div.entryless:first').width() - 90);
         }).resize();
     });
+
+    $('.deleteConfirmation').on('click', function () {
+        return confirm('This paste will be deleted forever. Are you sure you want to do this?');
+    });
 });

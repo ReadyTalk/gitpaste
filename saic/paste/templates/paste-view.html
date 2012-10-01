@@ -58,7 +58,7 @@ gitpaste.com - anonymous paste
     {% endif %}
     {% if commit_current.parent_set.owner == user %}
       <div class="sidebar-message">
-        <a class='alert' href='{% url paste_delete pk=commit_current.parent_set.pk %}'>delete this entire paste</a>
+        <a class='alert deleteConfirmation' href='{% url paste_delete pk=commit_current.parent_set.pk %}'>delete this entire paste</a>
       </div>
     {% endif %}
   {% endif %}
