@@ -22,7 +22,7 @@ def generate_icon(email):
     return gravatar
 
 USE_TZ = True
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 AUTH_PROFILE_MODULE = "paste.Profile"
@@ -181,7 +181,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 # Import local_settings if possible
+# "The Ugly Hack" method:
+# http://www.robgolding.com/blog/2010/05/03/extending-settings-variables-with-local_settings-py-in-django/
 try:
-    from local_settings import *
-except ImportError, exp:
-    pass
+    LOCAL_SETTINGS
+except NameError:
+    try:
+        from local_settings import *
+    except ImportError, exp:
+        pass
