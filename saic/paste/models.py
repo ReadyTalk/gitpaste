@@ -1,8 +1,12 @@
 import pytz
+import shutil
 
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 import timezone
 
@@ -31,6 +35,12 @@ class DateTimeFieldTZ(models.DateTimeField):
             default_timezone = timezone.utc
             value = timezone.make_aware(value, default_timezone)
         return value
+
+
+@receiver(pre_delete)
+def set_delete_repo(sender, instance, **kwargs):
+    if sender == Set:
+        shutil.rmtree(instance.repo)
 
 
 class Set(models.Model):
