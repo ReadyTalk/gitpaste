@@ -185,7 +185,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 try:
     LOCAL_SETTINGS
 except NameError:
-    try:
+    if os.path.exists(os.sep.join([os.path.dirname(__file__), 'local_settings.py'])):
         from local_settings import *
-    except ImportError, exp:
-        pass
